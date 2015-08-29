@@ -7,10 +7,13 @@ Stellar spider
 About
 -----
 Stellar spider is HTML5 canvas decoration for your website. Include `stellarSpider.min.js` code into your web 
-and add tag `<canvas>` with id `stellarSpider`. [Check example](http://jkmas.github.io/stellar-spider).
+and add tag `<canvas>` with id `stellarSpider`. For displaying the tags you have to 
+assign variable `tags` to the array with tags at the beginning of the script stellarSpider.
+[Check example](http://jkmas.github.io/stellar-spider).
 
 Version
 ------
+  * 1.1.0 - tags	
   * 1.0.0 - initial release
 
 Author

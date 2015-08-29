@@ -1,13 +1,10 @@
 /*!
- * Stellar spider v1.0.0
+ * Stellar spider v1.1.0
  * Stellar spider is canvas decoration for your website
  * Author JkmAS Mejstrik
  * Website jkmas.cz
  * Licensed under MIT (https://github.com/JkmAS/stellar-spider/blob/master/LICENSE)
  */
- 
-var canvas = document.getElementById('stellarSpider');
-var ctx = canvas.getContext('2d');
 
 /*
  * =====================================================================
@@ -15,7 +12,7 @@ var ctx = canvas.getContext('2d');
  * =====================================================================
  */ 
  
-//quantity of points and time to change position of point 
+//quantity of points and time to change position of point
 var POINTS_QUANTITY = MOVE_TIME = 500;
 //difference between distance of two points
 var DIFFERENCE = 50;
@@ -25,12 +22,15 @@ var DIFFERENCE = 50;
  * Variables
  * =====================================================================
  */ 
+var canvas = document.getElementById('stellarSpider');
+var ctx = canvas.getContext('2d'); 
 var points = [];
 var cursor = {
 	x: null,
 	y: null
 };
-
+//to disable texts set tags to null;
+var tags = null;
 /*
  * =====================================================================
  * Logic
@@ -50,7 +50,9 @@ function generatePointsCoordinates(){
 			//determining the direction
 			moveToPoint: Math.floor((Math.random() * POINTS_QUANTITY) + 0),
 			//time to change of position 
-			moveTime: i
+			moveTime: i,
+			//text tag for point
+			tag: ((typeof tags !== 'undefined' && tags != null) ? tags[i] : null)
 		};
 		points.push(point);
 	}
@@ -64,6 +66,7 @@ function generatePoints(){
 	
 		drawPoint(points[p].x, points[p].y, points[p].sizePoint, points[p].transparency);
 		generateLines(points[p]);
+		generateTags(points[p]);
 	}
 }
 
@@ -83,6 +86,14 @@ function generateLines(point){
 			//increase max
 			lines++;		
 		} 
+	}
+}
+
+//generate tags
+function generateTags(point){
+	//check if tag is set
+	if (point.tag != null) {
+		drawTag(point.x, point.y, point.tag, point.transparency);
 	}
 }
 
@@ -157,6 +168,7 @@ function getTransparency(point){
 		return "0";
 	}
 }
+
 /*
  * =====================================================================
  * Drawing functions 
@@ -182,6 +194,13 @@ function drawLine(pointFrom, pointTo, transparency){
 	ctx.strokeStyle = "rgba(255,255,255,"+transparency+")";	
 	ctx.closePath();
 	ctx.stroke();	
+}
+
+//draw text
+function drawTag(x, y, text, transparency){
+	ctx.font = "bold 9px Ubuntu";
+	ctx.fillStyle = "rgba(255,255,255,"+transparency+")";
+	ctx.fillText(text,x,y);
 }
 
 /*
