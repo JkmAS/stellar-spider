@@ -30,7 +30,8 @@ var cursor = {
 	y: null
 };
 //to disable texts set tags to null;
-var tags = null;
+//var tags = null;
+var tags = tagsExample;
 /*
  * =====================================================================
  * Logic
