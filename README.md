@@ -4,6 +4,7 @@ Stellar spider
 <p align="center">
   <img src="https://github.com/JkmAS/stellar-spider/blob/master/promo.png" alt="Stellar spider"/>
 </p>
+
 About
 ------
 Stellar spider is HTML5 canvas decoration for your website. Include `stellarSpider.min.js` code into your web 
